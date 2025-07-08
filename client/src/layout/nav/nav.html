@@ -1,5 +1,5 @@
 <header
-  class="p-3 w-full fixed top-0 z-50 bg-gradient-to-r from-primary to-black"
+  class="p-3 w-full fixed top-0 z-50 bg-gradient-to-r from-primary to-cyan-900"
 >
   <div class="flex align-middle items-center px-10 mx-auto gap-6">
     <div class="text-white">
@@ -30,6 +30,9 @@
       }
       <a routerLink="/errors" routerLinkActive="text-accent">Errors</a>
     </nav>
+    @if (busyService.busyRequestCount() > 0) {
+    <span class="loading loading-spinner text-accent"></span>
+    }
     <div class="flex align-middle ml-auto gap-3">
       <div class="dropdown mr-5 dropdown-end">
         <button
@@ -83,7 +86,8 @@
           tabindex="0"
           class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
         >
-          <li><a>Edit Profile</a></li>
+          <li><a routerLink="/members/{{ user.id }}">Edit profile</a></li>
+
           <li><a (click)="logout()">Logout</a></li>
         </ul>
       </div>
